@@ -96,4 +96,20 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   setClock('.timer', deadLine);
+
+  //Madal
+
+  const modal = document.querySelector('.modal'),
+        modalBtnOpen = document.querySelector('.btn'),
+        modalBtnClose = document.querySelector('.modal__close');
+
+        console.log(modalBtnClose);
+
+  modalBtnOpen.addEventListener('click',() => {
+    modal.style.display = 'flex';
+  });
+
+  modalBtnClose.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
 });
