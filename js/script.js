@@ -100,16 +100,41 @@ window.addEventListener('DOMContentLoaded', () => {
   //Madal
 
   const modal = document.querySelector('.modal'),
-        modalBtnOpen = document.querySelector('.btn'),
+        modalBtns = document.querySelectorAll('.btn'),
         modalBtnClose = document.querySelector('.modal__close');
 
-        console.log(modalBtnClose);
+  function modalOpen() {
+    modal.classList.add('show');
+    modal.classList.remove('hide');
+    document.body.style.overflow = 'hidden';
+  }
 
-  modalBtnOpen.addEventListener('click',() => {
-    modal.style.display = 'flex';
+  function modalClose() {
+    modal.classList.add('hide');
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  modalBtns.forEach(btn => {
+    btn.addEventListener('click',() => {
+      modalOpen();
+    });
   });
 
-  modalBtnClose.addEventListener('click', () => {
-    modal.style.display = 'none';
+  modalBtnClose.addEventListener('click', (e) => {
+    modalClose();
   });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modalClose();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Escape') {
+      modalClose();
+    }
+  });
+  
 });
